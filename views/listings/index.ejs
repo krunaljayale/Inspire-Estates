@@ -1,134 +1,113 @@
 <% layout("/layouts/boilerplate.ejs") %>
+<head>
+  <link rel="stylesheet" href="/css/indexPage.css">
+</head>
 
-<style>
-  #filters{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: center;
-  }
-  .filter{
-    margin-top: 2rem;
-    text-align: center;
-    opacity: 0.7;
-  }
-  .filter:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-  .filter p{
-    font-size: 0.8rem;
-  }
 
-  .tax-info{
-display: none;
-  }
-  
-  .tax-toggle{
-    border: 1px solid grey;
-    border-radius: 1rem;
-    height:3.25rem;
-    padding: 1rem;
-    margin-left: 3.5rem;
-    display:flex;
-    align-items: center;
-  }
-</style>
+<div class="master-div">
+  <div class="index-page-top">
+    <div id="filters" >
 
-<div id="filters" >
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Trending</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Room</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p>Room</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic cities</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p>Iconic cities</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountain</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain"></i></div>
-    <p>Mountain</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-brands fa-fort-awesome"></i></div>
-    <p>Castles</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></div>
-    <p>Amazing Pools</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>Camping</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-tractor"></i></div>
+        <p>Farms</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-tractor"></i></div>
-    <p>Farms</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-regular fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-regular fa-snowflake"></i></div>
-    <p>Arctic</p>
-  </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p>
+      </div>
 
-  <div class="filter">
-    <div><i class="fa-solid fa-igloo"></i></div>
-    <p>Domes</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-ship"></i></div>
-    <p>Boats</p>
-  </div>
-
-  <div class="tax-toggle">
-    <div class="form-check-reverse form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
-      <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+      <div class="filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+      </div>
+    </div>
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+      </div>
     </div>
   </div>
+
+    <% for(let listing of allListings){ %>
+      <a href="/listings/<%= listing._id %>" class="nav-link index-page-card">
+        <div class="index-page-card-div">
+            <img 
+            src="<%= listing.image.url %>" class="index-page-card-img" alt="loading" >
+            
+            <div class="content-div">
+              <p class="card-text listing-name"><%= listing.title %></p>
+              <p class="card-text listing-price"><b>&#8377; <%= listing.price.toLocaleString("en-IN") %></b> night
+              <i class="tax-info">&nbsp; &nbsp; +18% GSt</i></p>
+            </div>
+        </div>
+      </a>
+    <% } %>
 
 </div>
-    <div class="row row-col-lg-4 row-col-md-3 row-col-sm-1 row-col-1 mt-3">
 
-      <% for(let listing of allListings){ %>
-        
-          <div class="card listing-card  home-card" style="width:20rem;">
-              <img 
-              src="<%= listing.image.url %>" class="card-img-top" alt="loading" style="height:20rem;" >
-              
-              <div class="card-body">
-                <h5 class="card-title"><b><%= listing.title %></b></h5>
-                <p class="card-text"> &#8377; <%= listing.price.toLocaleString("en-IN") %>/night
-                <i class="tax-info">&nbsp; &nbsp; +18% GSt</i></p>
-                <a href="/listings/<%= listing._id %>" class="btn btn-primary">See in Detail</a>
-              </div>
-          </div>
 
-      <% } %>
-    </div>
+<!-- Clone By-mr__inevitable/insta.com
+     
+          !! श्री हरिवंश !!
 
-  <script>
-    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-    taxSwitch.addEventListener("click", ()=>{
-      let taxInfo = document.getElementsByClassName("tax-info");
-      for(info of taxInfo){
-        if(info.style.display != "inline"){
-          info.style.display = "inline";
-        }else{
-          info.style.display = "none";
-        }
-      }
-    })
-  </script>
+
+██████╗░░█████╗░██████╗░██╗░░██╗███████╗
+██╔══██╗██╔══██╗██╔══██╗██║░░██║██╔════╝
+██████╔╝███████║██║░░██║███████║█████╗░░
+██╔══██╗██╔══██║██║░░██║██╔══██║██╔══╝░░
+██║░░██║██║░░██║██████╔╝██║░░██║███████╗
+╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚══════╝ 
+
+
+
+██████╗░░█████╗░██████╗░██╗░░██╗███████╗
+██╔══██╗██╔══██╗██╔══██╗██║░░██║██╔════╝
+██████╔╝███████║██║░░██║███████║█████╗░░
+██╔══██╗██╔══██║██║░░██║██╔══██║██╔══╝░░
+██║░░██║██║░░██║██████╔╝██║░░██║███████╗
+╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚══════╝
+ 
+ ~~~~~~~~~~~~~~~~~~-->

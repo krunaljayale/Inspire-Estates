@@ -21,7 +21,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL= process.env.MONGO_URL;
 const dbUrl = process.env.ATLASDB_URL;
 
 main()
@@ -32,14 +32,14 @@ main()
     });
 
 async function main(){
-    mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl);
 }
 
 
 // Required Stuff
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname,"views"));
-app.use(express.urlencoded({extended:true})); 
+app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
@@ -100,15 +100,10 @@ app.use((req,res,next)=>{
     next();
 });
 
-
-// app.get("/demo" ,async(req,res)=>{
-//     let fakeUser = new User({
-//         email:"standard@gmail.com",
-//         username:"Krunal-Jayale"
-//     });
-//    let registeredUser = await User.register(fakeUser, "helloworld");
-//    res.send(registeredUser);
-// });
+// const log = (req,res,next)=>{
+//     console.log(req.body);
+//     next();
+// }
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter );

@@ -1,55 +1,55 @@
-<style>
-  .search-btn{
-    background-color: #fe424d;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-  }
-  .search-btn:hover{
-    background-color: #fe424d;
-    color: #fff;
-  }
-  .search-btn i{
-    display: inline;
-    margin-right: 0.5rem;
-  }
-
-  .search-input{
-    border-radius: 25px;
-    padding: 0.5 3rem 0.5 3rem;
-  }
-</style>
+<head>
+  <link rel="stylesheet" href="/css/navbar.css">
+</head>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Explore</a>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+  <div class="navbar-container">
+
+    <div class="navbar-top">
+      <a href="/listings" class="navbar-logo-tag">
+        <img src="/images/logo airbnb.png" alt="" class="navbar-logo-img">
+      </a>
+
+      <div class="navbar-center-content-div">
+        <a href="" class="btn">Stays</a>
+        <a href="" class="btn">Experiences</a>
+        <a href="" class="btn">Online Experiences</a>
+      </div>
+
+      <div class="navbar-right-content-div">
+        <a class="navbar-add-btn btn" href="/listings/new">Become a Host</a>
+        <a href="" class="navbar-globe-btn btn"><i class="fa-solid fa-globe"></i></a>
+        <div class="navbar-profile-btn-div">
+          <button class="navbar-profile-btn" id="navbar-profile-btn">
+              <i class="fa-solid fa-bars"></i>
+              <i class="fa-solid fa-user"></i>
+          </button>
+          <div class="navbar-popup" id="navbar-popup">
+            <% if(!currUser){ %>
+              <a class="nav-link" href="/signup">Sign up</a>
+              <a class="nav-link" href="/login">Log in</a>
+            <% } %>
+            <% if(currUser){ %>
+             <a class="nav-link" href="/logout">Log out</a>
+             <% } %>
+             <hr>
+             <a class="nav-link" href="/listings/new">Airbnb your home</a>
+             <a class="nav-link" href="">Help Centre</a>
+          </div>
         </div>
-
-        <div class="navbar-nav ms-auto">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 search-input" type="search" placeholder="Search destinations" >
-            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-          </form>
-        </div>
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Airbnb your home</a>
-          <% if(!currUser){ %>
-            <a class="nav-link" aria-current="page" href="/signup"><b>Sign up</b></a>
-            <a class="nav-link" href="/login"><b>Log in</b></a>
-          <% } %>
-
-          <% if(currUser){ %>
-            <a class="nav-link" href="/logout"><b>Log out</b></a>
-          <% } %>
-        </div>
-
       </div>
     </div>
-  </nav>
+
+    <div class="navbar-search-div">
+      <form class="navbar-search-form" role="search">
+        <input class="form-control navbar-search-input" type="search" placeholder="Search destinations" >
+        <button class="btn navbar-search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
+
+  </div>
+
+</nav>

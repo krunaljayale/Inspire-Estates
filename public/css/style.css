@@ -5,21 +5,7 @@ body{
     flex:1 !important;
 }
 
-/* Nav */
-.navbar {
-    height:5rem;
-    background-color: #fff;
-}
 
-.fa-compass {
-    color: #fe424d;
-    font-size: 2rem;
-}
-
-.nav-link{
-    color:#222222 !important;
-    /* When we use any bootstrap material it will not allow us to change its basic css until we mark it as '!important' */
-}
 
 /* Footer */
 footer{
@@ -60,51 +46,4 @@ footer{
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
-}
-
-
-/* Cards */
-.listing-card{
-    border: none !important;
-    margin-bottom: 2rem;
-}
-.home-card:hover{
-    transform: scale(1.01) !important;
-}
-.card-img-top{
-    border-radius: 1rem !important;
-    width: 100% !important;
-    object-fit: cover !important;
-}
-
-.card-body{
-    padding:0;
-}
-
-.card-text,
-.card-title {
-    font-weight: 400 !important;
-}
-
-/* Add New Listing */
-.add-btn{
-    background-color: #fe424d !important;
-    border: none !important;
-}
-
-/* Show Page */
-.show-img{
-    height: 40vh !important;
-    width: 200% !important;
-}
-
-.btns{
-    display: flex;
-}
-
-/* Map */
-#map { 
-    position: absolute; 
-    height: 400px;
-    width: 60vh; 
 }

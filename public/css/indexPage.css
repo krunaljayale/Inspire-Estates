@@ -1,0 +1,149 @@
+.master-div{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.index-page-top{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1rem 2rem;
+}
+
+#filters{
+    display:flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content:flex-start;
+    overflow: auto;
+}
+.filter{
+    text-align: center;
+    opacity: 0.7;
+}
+.filter:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+.filter p{
+    font-size: 16px;
+    margin: 0 !important;
+}
+
+.tax-info{
+    display: none;
+}
+
+.tax-toggle{
+    border: 1px solid rgba(0, 0, 0, 0.164);
+    border-radius: 1rem;
+    height:3rem;
+    min-width: 251px;
+    padding: 1rem;
+    display:flex;
+    align-items: center;
+}
+
+
+/* Cards */
+.index-page-card:hover{
+    background-color: transparent !important;
+}
+
+.index-page-card-div{
+    margin-bottom: 2rem;
+}
+.index-page-card-div:hover{
+    transform: scale(1.01);
+}
+.index-page-card-img{
+    border-radius: 1rem;
+}
+.content-div{
+    height: 80px;
+}
+
+.listing-name,
+.listing-price {
+    font-size: 15px;
+    width: 100%;
+}
+
+.listing-name{
+    height:40%;
+    margin:1rem 0;
+    font-weight: 700;
+}
+
+@media screen and (max-width:549px) {
+    .index-page-card-img{
+        width: 90vw ;
+        height: 90vw;
+    }
+
+    .index-page-card-div{
+        width:90vw;
+    }
+}
+
+@media screen and (min-width:549px) {
+    .index-page-card-img{
+        width: 40vw ;
+        height: 40vw;
+    }
+
+    .index-page-card-div{
+        width:40vw;
+    }
+}
+
+@media screen and (min-width:950px) {
+    .index-page-card-img{
+        width: 28vw ;
+        height: 28vw;
+    }
+
+    .index-page-card-div{
+        width:28vw;
+    }
+}
+
+@media screen and (min-width:1128px) {
+    .index-page-card-img{
+        width: 22vw ;
+        height: 22vw;
+    }
+
+    .index-page-card-div{
+        width:22vw;
+    }
+}
+
+@media screen and (min-width:1618px) {
+    .index-page-card-img{
+        width: 15vw ;
+        height: 15vw;
+    }
+
+    .index-page-card-div{
+        width:15vw;
+    }
+}
+
+
+@media screen and (max-width:744px) {
+    .tax-toggle{
+        width: 90vw;
+        border: 1px solid #00000065;
+    }
+}
+
+@media screen and (min-width:744px) {
+    .index-page-top{
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+}
