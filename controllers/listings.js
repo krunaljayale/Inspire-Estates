@@ -46,14 +46,14 @@ module.exports.createListing =  async(req,res,next)=>{
     newListing.geometry = response.body.features[0].geometry;
     await newListing.save();
     req.flash("success", "New Listing Created!");
-    res.redirect("/listings");
+    res.redirect("/");
 };
 
 module.exports.editListing = async(req,res)=>{
     const listing = await Listing.findById(req.params.id);
     if(!listing){
         req.flash("error", "Listing does not exists");
-        res.redirect("/listings");
+        res.redirect("/");
        }
     // This is for if we want to preview image in the edit form
     // let originalImage = listing.image.url;
@@ -80,5 +80,5 @@ module.exports.deleteListing = async(req,res)=>{
     let {id} = req.params;
   await  Listing.findByIdAndDelete(id);
   req.flash("success", "Listing Deleted");
-  res.redirect("/listings");
+  res.redirect("/");
 };
