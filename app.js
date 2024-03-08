@@ -20,6 +20,8 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const wrapAsync = require("./utils/wrapAsync.js");
+const listingContoller = require("./controllers/listings.js");
 
 // const MONGO_URL= process.env.MONGO_URL;
 const dbUrl = process.env.ATLASDB_URL;
@@ -75,13 +77,6 @@ const sessionOptions = {
 };
 
 
-
-// app.get("/", (req,res)=>{
-//     res.send("Hii I am Root")
-// });
-
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -100,10 +95,8 @@ app.use((req,res,next)=>{
     next();
 });
 
-// const log = (req,res,next)=>{
-//     console.log(req.body);
-//     next();
-// }
+
+app.get("/",wrapAsync(listingContoller.index));
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter );
@@ -118,6 +111,7 @@ app.use((err,req,res,next)=>{
     let { statusCode = 500, message = "Something went wrong" } = err;
     res.status(statusCode).render("error.ejs",{err});
 });
+
 
 app.listen(8080,()=>{
     console.log("SERVER is ON");
