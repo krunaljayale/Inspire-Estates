@@ -53,7 +53,7 @@ module.exports.editListing = async(req,res)=>{
     const listing = await Listing.findById(req.params.id);
     if(!listing){
         req.flash("error", "Listing does not exists");
-        res.redirect("/listings");
+        res.redirect("/");
        }
     // This is for if we want to preview image in the edit form
     // let originalImage = listing.image.url;
