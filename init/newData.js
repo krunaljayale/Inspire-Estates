@@ -357,6 +357,9 @@ const sampleListings = [
       price: 3000,
       location: 'Mykonos',
       country: 'Greece',
-      geometry: { type: 'Point', coordinates: [25.3764, 36.3932] }
+      geometry: { type: 'Point'},
+      coordinates:[25.3764, 36.3932] 
     }
   ];
+
+  module.exports = { data: sampleListings };

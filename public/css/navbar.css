@@ -21,7 +21,8 @@
 
 .navbar-logo-img{
   width: auto;
-  height: 2rem;
+  height: 5rem;
+  border-radius: 10px;
 }
 
 .navbar-container{

@@ -23,8 +23,8 @@ const User = require("./models/user.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const listingContoller = require("./controllers/listings.js");
 
-// const MONGO_URL= process.env.MONGO_URL;
-const dbUrl = process.env.ATLASDB_URL;
+const MONGO_URL= process.env.MONGO_URL;
+// const MONGO_URL = process.env.ATLASDB_URL;
 
 main()
     .then(()=>{
@@ -34,7 +34,7 @@ main()
     });
 
 async function main(){
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(MONGO_URL);
 }
 
 
@@ -52,7 +52,7 @@ app.use(cookieParser());
 
 
 const store = MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:MONGO_URL,
     crypto: {
         secret: process.env.SECRET,
       },
