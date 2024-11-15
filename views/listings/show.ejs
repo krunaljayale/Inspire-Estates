@@ -3,6 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="/css/showPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <script>
@@ -91,5 +92,21 @@
     </div>
 
 </div>
-<script src="/js/map.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet-src.min.js" integrity="sha512-3/WyQrhTdqSVmSifQS62akgtNBhZha2lS44TnoN9Jk3J01FvsKK4suVmz6t5FtccGb5iJw58GoFhBjPE5EPc8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+  let lattitude = coordinates[1];
+  let longitude = coordinates[0];
+  
+  // Below is for LeafLet Map //
+  const map = L.map("map").setView([lattitude,longitude],10);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+    attribution:'Magic Estates'
+  }).addTo(map);
+
+  L.marker([lattitude,longitude]).addTo(map)
+
+</script>
 <%- include("../includes/footer.ejs") %>

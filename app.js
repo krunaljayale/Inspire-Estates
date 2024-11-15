@@ -23,8 +23,8 @@ const User = require("./models/user.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const listingContoller = require("./controllers/listings.js");
 
-const MONGO_URL= process.env.MONGO_URL;
-// const MONGO_URL = process.env.ATLASDB_URL;
+// const MONGO_URL= process.env.MONGO_URL;
+const MONGO_URL = process.env.ATLASDB_URL;
 
 main()
     .then(()=>{

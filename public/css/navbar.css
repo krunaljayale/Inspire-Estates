@@ -17,6 +17,9 @@
 .navbar-logo-tag{
   float: left !important;
   height: 2rem !important;
+  text-decoration: none;
+  color: #001942 !important;
+  font-weight: 900;
 }
 
 .navbar-logo-img{
